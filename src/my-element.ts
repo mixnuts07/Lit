@@ -1,4 +1,4 @@
-import { LitElement, css, html } from 'lit'
+import {LitElement, css, html, PropertyValues} from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 /**
  * An example element.
@@ -27,8 +27,10 @@ export class MyElement extends LitElement {
     super.attributeChangedCallback(name, _old, value);
     console.log(name)
   }
-}
 
+  protected shouldUpdate(_changedProperties: PropertyValues): boolean {
+    return super.shouldUpdate(_changedProperties);
+  }
 
   @property({ type: Number })
   count = 0
