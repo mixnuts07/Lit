@@ -1,8 +1,5 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-import litLogo from './assets/lit.svg'
-import viteLogo from '/vite.svg'
-
 /**
  * An example element.
  *
@@ -11,35 +8,24 @@ import viteLogo from '/vite.svg'
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  /**
-   * Copy for the read the docs hint.
-   */
-  @property()
-  docsHint = 'Click on the Vite and Lit logos to learn more'
-
-  /**
-   * The number of times the button has been clicked.
-   */
+  constructor() {
+    super();
+    this.test = "constructor happened."
+  }
   @property({ type: Number })
   count = 0
+  @property({ type: String })
+  test = "THIS IS A TEST PROPERTY"
 
   render() {
     return html`
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src=${viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://lit.dev" target="_blank">
-          <img src=${litLogo} class="logo lit" alt="Lit logo" />
-        </a>
-      </div>
       <slot></slot>
       <div class="card">
         <button @click=${this._onClick} part="button">
           count is ${this.count}
         </button>
       </div>
-      <p class="read-the-docs">${this.docsHint}</p>
+      <p class="read-the-docs">${this.test}</p>
     `
   }
 
@@ -54,20 +40,6 @@ export class MyElement extends LitElement {
       padding: 2rem;
       text-align: center;
     }
-
-    .logo {
-      height: 6em;
-      padding: 1.5em;
-      will-change: filter;
-      transition: filter 300ms;
-    }
-    .logo:hover {
-      filter: drop-shadow(0 0 2em #646cffaa);
-    }
-    .logo.lit:hover {
-      filter: drop-shadow(0 0 2em #325cffaa);
-    }
-
     .card {
       padding: 2em;
     }
@@ -80,16 +52,6 @@ export class MyElement extends LitElement {
       font-size: 3.2em;
       line-height: 1.1;
     }
-
-    a {
-      font-weight: 500;
-      color: #646cff;
-      text-decoration: inherit;
-    }
-    a:hover {
-      color: #535bf2;
-    }
-
     button {
       border-radius: 8px;
       border: 1px solid transparent;
