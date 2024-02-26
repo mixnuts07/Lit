@@ -11,7 +11,25 @@ export class MyElement extends LitElement {
   constructor() {
     super();
     this.test = "constructor happened."
+    console.log(this.test)
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.test = "connected Callback happened."
+    console.log(this.test)
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.test = "disconnected Callback happened"
+    console.log(this.test)
+  }
+  attributeChangedCallback(name: string, _old: string | null, value: string | null) {
+    super.attributeChangedCallback(name, _old, value);
+    console.log(name)
+  }
+}
+
+
   @property({ type: Number })
   count = 0
   @property({ type: String })
